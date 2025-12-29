@@ -26,16 +26,19 @@ Predict:
 ## 📂 Project Structure
 
 assignment_solution/
+
 ├── data_loader.py # Dataset & preprocessing
 ├── model.py # Vision + text fusion model
 ├── train.py # Training pipeline
 ├── predict.py # Inference & visualization
 ├── requirements.txt
 ├── outputs/
+
 │ ├── training_loss.png
 │ ├── pred_0.png
 │ ├── pred_1.png
 │ └── ...
+
 └── README.md
 ---
 
