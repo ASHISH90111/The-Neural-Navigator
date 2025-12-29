@@ -190,7 +190,7 @@ Preserve already learned representations
 
 ---
 
-##📊  Challenges & Solutions
+## 📊  Summary
 
 - Mean endpoint error converges to ~0.05–0.1 pixels
 - Success rate ≈ 95% using a 2-pixel threshold
