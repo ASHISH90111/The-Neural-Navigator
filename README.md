@@ -80,27 +80,130 @@ Total Loss = MSE Loss + 0.1 × Smoothness Loss
 
 Smoothness loss penalizes sharp direction changes:
 
-Smoothness loss penalizes sharp direction changes:
-
 ```python
 (path[:, 1:] - path[:, :-1]) ** 2
 
+```
+This encourages smoother and more realistic trajectories.
 
-✅ That’s it.
+⚙️ Optimization
 
-### Important rule (why this works)
-- Opening fence: ```python  
-- Closing fence: ```  
-- Nothing else inside  
-- Next text must start **after** the closing ``` on a new line
+Optimizer: Adam
 
----
+Learning rate: 1e-3
 
-### Example in context (safe version)
+Scheduler: StepLR(step_size=10, gamma=0.7)
 
-```md
-Smoothness loss penalizes sharp direction changes:
+📉 Training Behavior
 
-```python
-(path[:, 1:] - path[:, :-1]) ** 2
+Rapid initial loss decrease
 
+Stable convergence
+
+Smooth training curve
+
+No exploding gradients
+
+Stable long-term optimization
+
+Training loss is automatically saved to:
+outputs/training_loss.png
+🖼 Inference
+
+Run:
+python predict.py
+This will:
+
+Load the trained model
+
+Run inference on test images
+
+Draw predicted paths
+
+Save output images inside outputs/
+
+⚠️ Challenges & Solutions
+1. Model checkpoint incompatibility
+
+Problem:
+Changing the model architecture caused state_dict size mismatch errors.
+
+Solution:
+Implemented safe checkpoint loading that only loads compatible weights and skips mismatched layers.
+
+2. Text padding caused embedding index errors
+
+Problem:
+Variable-length instructions caused out-of-range indices in the embedding layer.
+
+Solution:
+Added a padding token and updated the embedding layer to support padding safely.
+
+3. Jagged / noisy predicted paths
+
+Problem:
+Early predictions had sharp or unstable trajectories.
+
+Solution:
+Added a smoothness regularization term to penalize abrupt direction changes.
+
+4. Training instability
+
+Problem:
+Loss oscillated after several epochs.
+
+Solution:
+Introduced a learning-rate scheduler to gradually reduce the learning rate and stabilize training.
+
+📊 Performance Summary
+
+Training loss decreases smoothly
+
+Stable convergence behavior
+
+Correct directional movement toward target
+
+Generalizes to unseen samples
+
+Produces visually meaningful trajectories
+
+The goal is not pixel-perfect accuracy, but correct reasoning and stable learning behavior.
+
+📦 Requirements
+torch
+torchvision
+numpy
+opencv-python
+matplotlib
+tqdm
+Pillow
+
+Install dependencies:
+pip install -r requirements.txt
+
+🚀 How to Run
+Train the model
+python train.py
+
+Run inference
+python predict.py
+
+✅ Summary
+
+This project demonstrates:
+
+Multi-modal learning (vision + language)
+
+CNN-based visual perception
+
+Text embedding and fusion
+
+Regression-based trajectory prediction
+
+Debugging and architectural iteration
+
+Stable training with scheduling
+
+Clean, modular PyTorch code
+
+The implementation reflects practical challenges faced in robotics and embodied AI systems.
