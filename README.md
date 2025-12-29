@@ -39,13 +39,13 @@ assignment_solution/
 
 ├── outputs/
 
-│ ├── training_loss.png
+│   ├── training_loss.png
 
-│ ├── pred_0.png
+│   ├── pred_0.png
 
-│ ├── pred_1.png
+│   ├── pred_1.png
 
-│ └── ...
+│   └── ...
 
 └── README.md
 ---
