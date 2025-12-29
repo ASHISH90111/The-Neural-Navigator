@@ -222,8 +222,3 @@ This project demonstrates:
 - CNN-based visual perception
 - Text embedding and fusion
 - Regression-based trajectory prediction
-- Debugging and architectural iteration
-- Stable training with scheduling
-- Clean, modular PyTorch code
-
-The implementation reflects real-world challenges faced in robotics and embodied AI systems.
