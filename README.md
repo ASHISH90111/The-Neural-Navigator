@@ -37,7 +37,19 @@ Predict:
 Image and text embeddings are concatenated before prediction.
 
 ### Decoder
-Fully connected network predicting **10 (x, y)** coordinates.
+Fully connected network predicting **10 (x, y)** coordinates. 
+
+---
+
+## 🧪 Training
+
+### Loss Function
+
+```text
+Total Loss = MSE(path, ground_truth)
+           + 0.1 × Smoothness Loss
+(path[:, 1:] - path[:, :-1])²
+
 
 ---
 
