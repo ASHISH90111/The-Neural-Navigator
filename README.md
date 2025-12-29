@@ -33,7 +33,9 @@ assignment_solution/
 ├── train.py              # Training pipeline  
 ├── predict.py            # Inference + visualization  
 ├── requirements.txt  
-├── outputs/
+├── outputs
+
+
     ├── training_loss.png
     ├── pred_0.png
     ├── pred_1.png
