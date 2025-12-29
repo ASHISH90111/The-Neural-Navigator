@@ -137,43 +137,56 @@ This will:
 
 ## ⚠️ Challenges & Solutions
 
-### 1. Model checkpoint incompatibility
+### What was the hardest part of this assignment?
 
-**Problem:**  
-Changing architecture caused `state_dict` size mismatch errors.
-
-**Solution:**  
-Implemented safe checkpoint loading that only loads compatible weights and skips mismatched layers.
+The hardest part was designing a training and evaluation setup that looked realistic and meaningful, even though the dataset is small, synthetic, and highly deterministic.
+Because the images, shapes, and target coordinates follow a very regular structure, the model quickly learns an almost perfect mapping. The challenge was not just achieving low loss, but understanding why the model converges so fast, how to measure performance properly, and how to avoid misleading metrics.
 
 ---
 
-### 2. Text padding caused embedding index errors
+### Describe a specific bug you encountered and how you debugged it
 
-**Problem:**  
-Variable-length instructions caused out-of-range indices in embedding layers.
+One major issue I faced was state_dict loading errors when resuming training after modifying the model architecture.
 
-**Solution:**  
-Added padding-safe embedding logic and consistent vocabulary handling.
+Problem
 
----
+After changing the network (adding/removing layers), loading a previously saved checkpoint caused errors like:
+```scss
+size mismatch for fc.weight
+unexpected key(s) in state_dict
 
-### 3. Jagged / noisy predicted paths
+```
+This happened because PyTorch requires exact tensor shape matches when loading model weights.
 
-**Problem:**  
-Early predictions produced sharp or unstable trajectories.
+How I debugged it
 
-**Solution:**  
-Added a smoothness regularization term to penalize abrupt direction changes.
+I inspected the error messages to identify which layers had mismatched shapes.
 
----
+Printed and compared keys from:
 
-### 4. Training instability
+model.state_dict()
 
-**Problem:**  
-Loss oscillated after several epochs.
+checkpoint .pth file
 
-**Solution:**  
-Introduced a learning-rate scheduler to gradually reduce the learning rate and stabilize training.
+Identified that only some layers were still compatible.
+
+Fix
+
+I implemented safe checkpoint loading, where:
+
+Only parameters with matching names and shapes are loaded.
+
+Incompatible layers are skipped.
+
+Training continues normally with new layers initialized.
+
+This allowed me to:
+
+Resume training without crashes
+
+Experiment with architecture changes safely
+
+Preserve already learned representations
 
 ---
 
