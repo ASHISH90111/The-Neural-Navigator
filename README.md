@@ -19,3 +19,28 @@ Predict:
 
 ## 📂 Project Structure
 
+---
+
+## 🧠 Model Architecture
+
+### Vision Encoder
+- CNN with 3 convolution layers
+- Extracts spatial visual features
+- Output flattened feature vector
+
+### Text Encoder
+- Learnable word embeddings
+- Padding-safe embedding
+- Mean pooling over tokens
+
+### Fusion
+Image and text embeddings are concatenated before prediction.
+
+### Decoder
+Fully connected network predicting **10 (x, y)** coordinates.
+
+---
+
+## 🧩 Architecture Overview
+
+
