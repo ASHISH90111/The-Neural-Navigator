@@ -15,8 +15,8 @@ and outputs a sequence of **(x, y) coordinates** representing a path to the targ
 ## 📌 Problem Statement
 
 Given:
-- A 2D map image with colored shapes
-- A text instruction describing the target
+- A 2D map image with colored shapes  
+- A text instruction describing the target  
 
 Predict:
 - A sequence of 10 `(x, y)` points forming a navigation path from the image center to the target object.
@@ -40,7 +40,6 @@ assignment_solution/
 └── README.md
 
 
-
 ---
 
 ## 🧠 Model Architecture
@@ -51,9 +50,9 @@ assignment_solution/
 - Output flattened feature vector
 
 ### Text Encoder
-- Learnable word embeddings
-- Padding-safe embedding
-- Mean pooling over token embeddings
+- Learnable word embeddings  
+- Padding-safe embedding  
+- Mean pooling over token embeddings  
 
 ### Fusion
 The image and text embeddings are concatenated before prediction.
@@ -70,145 +69,18 @@ Image ──▶ CNN ──┐
 Text ──▶ Embed ┘
 
 
-
 ---
 
 ## 🧪 Training
 
 ### Loss Function
 
-The total loss is:
-
 Total Loss = MSE Loss + 0.1 × Smoothness Loss
 
-lua
 
-
-Where smoothness loss penalizes sharp direction changes:
+Smoothness loss penalizes sharp direction changes:
 
 ```python
-(path[:, 1:] - path[:, :-1])²
-This helps generate smoother and more realistic trajectories.
-
-Optimization
-Optimizer: Adam
-
-Learning rate: 1e-3
-
-Scheduler: StepLR(step_size=10, gamma=0.7)
-
-📉 Training Behavior
-Rapid initial loss decrease
-
-Stable convergence
-
-Smooth training curve
-
-No exploding gradients
-
-Stable long-term training
-
-The training loss curve is saved automatically:
-
-bash
-Copy code
-outputs/training_loss.png
-🖼 Inference
-Run:
-
-bash
-Copy code
-python predict.py
-This will:
-
-Load the trained model
-
-Run inference on test images
-
-Draw predicted paths
-
-Save visual outputs inside outputs/
-
-⚠️ Challenges & Solutions
-1. Model checkpoint incompatibility
-Problem:
-Changing the architecture caused state_dict size mismatch errors when loading old checkpoints.
-
-Solution:
-Implemented safe loading by only loading compatible weights and skipping mismatched layers. This allowed continued training without crashes.
-
-2. Text padding caused embedding index errors
-Problem:
-Text instructions have variable length, which caused out-of-range errors in embedding layers.
-
-Solution:
-Added a padding token and updated the embedding layer to support padding safely.
-
-3. Jagged / noisy predicted paths
-Problem:
-Initial predictions had abrupt direction changes.
-
-Solution:
-Added a smoothness regularization term to penalize sharp path changes.
-
-4. Training instability
-Problem:
-Loss oscillated after several epochs.
-
-Solution:
-Added a learning-rate scheduler to gradually reduce the learning rate and stabilize training.
-
-📊 Performance Summary
-Training loss decreases smoothly
-
-Stable convergence behavior
-
-Correct directional movement toward target
-
-Generalizes to unseen samples
-
-Produces visually meaningful trajectories
-
-The objective is not pixel-perfect accuracy, but correct reasoning and stable learning behavior.
-
-📦 Requirements
-nginx
-Copy code
-torch
-torchvision
-numpy
-opencv-python
-matplotlib
-tqdm
-Pillow
-Install dependencies:
-
-
-pip install -r requirements.txt
-🚀 How to Run
-Train the model
-
-python train.py
-Run inference
-
-python predict.py
-✅ Summary
-This project demonstrates:
-
-Multi-modal learning (vision + language)
-
-CNN-based visual perception
-
-Text embedding and fusion
-
-Regression-based trajectory prediction
-
-Debugging and model iteration
-
-Stable training with scheduling
-
-Clean modular PyTorch code
-
-The implementation reflects practical challenges faced in robotics and embodied AI systems.
+(path[:, 1:] - path[:, :-1]) ** 2
 
 
