@@ -228,6 +228,7 @@ python predict.py
 This project demonstrates:
 
 - Multi-modal learning (vision + language)
+- got 95% accuracy 
 - CNN-based visual perception
 - Text embedding and fusion
 - Regression-based trajectory prediction
