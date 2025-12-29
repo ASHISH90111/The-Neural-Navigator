@@ -33,7 +33,7 @@ assignment_solution/
 ├── train.py              
 ├── predict.py            
 ├── requirements.txt  
-├── outputs/ ( training_loss.png , pred_0.png ,  pred_1.png ..)
+├── outputs   ( training_loss.png , pred_0.png ,  pred_1.png ..)
 ├── README.md
 
 ---
