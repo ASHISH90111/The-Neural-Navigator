@@ -190,15 +190,16 @@ Preserve already learned representations
 
 ---
 
-## 📊 Performance Summary
+##📊 Performance Summary
 
-- Training loss decreases smoothly  
-- Stable convergence behavior  
-- Correct directional movement toward target  
-- Generalizes to unseen samples  
-- Produces visually meaningful trajectories  
+- Mean endpoint error converges to ~0.05–0.1 pixels
+- Success rate ≈ 95% using a 2-pixel threshold
+- Evaluation is performed on the same synthetic distribution as training
+- High accuracy is expected due to the deterministic structure of the dataset
+- Predictions are smooth and visually consistent with the target direction
 
-The goal is **not pixel-perfect accuracy**, but correct reasoning and stable learning behavior.
+This metric reflects endpoint proximity rather than classification accuracy.
+
 
 ---
 
@@ -238,12 +239,3 @@ python predict.py
 
 
 
-##📊 Performance Summary
-
-- Mean endpoint error converges to ~0.05–0.1 pixels
-- Success rate ≈ 95% using a 2-pixel threshold
-- Evaluation is performed on the same synthetic distribution as training
-- High accuracy is expected due to the deterministic structure of the dataset
-- Predictions are smooth and visually consistent with the target direction
-
-This metric reflects endpoint proximity rather than classification accuracy.
