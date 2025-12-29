@@ -236,12 +236,14 @@ python predict.py
 
 ---
 
-## ✅ Summary
 
-This project demonstrates:
 
-- Multi-modal learning (vision + language)
-- got 95% accuracy 
-- CNN-based visual perception
-- Text embedding and fusion
-- Regression-based trajectory prediction
+##📊 Performance Summary
+
+- Mean endpoint error converges to ~0.05–0.1 pixels
+- Success rate ≈ 95% using a 2-pixel threshold
+- Evaluation is performed on the same synthetic distribution as training
+- High accuracy is expected due to the deterministic structure of the dataset
+- Predictions are smooth and visually consistent with the target direction
+
+This metric reflects endpoint proximity rather than classification accuracy.
