@@ -34,7 +34,7 @@ assignment_solution/
 ├── predict.py            
 ├── requirements.txt  
 ├── outputs/ ( training_loss.png , pred_0.png ,  pred_1.png ..)
-          └── README.md
+├── README.md
 
 ---
 
