@@ -79,9 +79,9 @@ MSE Loss + 0.1 × Smoothness Loss
 
 Smoothness loss penalizes sharp direction changes:
 
-\`\`\`python
+```python
 (path[:, 1:] - path[:, :-1]) ** 2
-\`\`\`
+```
 
 This encourages smoother and more realistic trajectories.
 
@@ -113,9 +113,9 @@ outputs/training_loss.png
 
 Run:
 
-\`\`\`bash
+```bash
 python predict.py
-\`\`\`
+```
 
 This will:
 
@@ -182,7 +182,7 @@ The goal is **not pixel-perfect accuracy**, but correct reasoning and stable lea
 
 ## 📦 Requirements
 
-\`\`\`
+```
 torch
 torchvision
 numpy
@@ -190,27 +190,27 @@ opencv-python
 matplotlib
 tqdm
 Pillow
-\`\`\`
+```
 
 Install dependencies:
 
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 ---
 
 ## 🚀 How to Run
 
 ### Train the model
-\`\`\`bash
+```bash
 python train.py
-\`\`\`
+```
 
 ### Run inference
-\`\`\`bash
+```bash
 python predict.py
-\`\`\`
+```
 
 ---
 
