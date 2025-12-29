@@ -39,8 +39,7 @@ assignment_solution/
 │ └── ...
 └── README.md
 
-yaml
-Copy code
+
 
 ---
 
@@ -70,8 +69,7 @@ Image ──▶ CNN ──┐
 ├── Concatenate ── FC Layers ── Path (10 × 2)
 Text ──▶ Embed ┘
 
-yaml
-Copy code
+
 
 ---
 
@@ -84,7 +82,7 @@ The total loss is:
 Total Loss = MSE Loss + 0.1 × Smoothness Loss
 
 lua
-Copy code
+
 
 Where smoothness loss penalizes sharp direction changes:
 
@@ -185,17 +183,14 @@ tqdm
 Pillow
 Install dependencies:
 
-bash
-Copy code
+
 pip install -r requirements.txt
 🚀 How to Run
 Train the model
-bash
-Copy code
+
 python train.py
 Run inference
-bash
-Copy code
+
 python predict.py
 ✅ Summary
 This project demonstrates:
@@ -216,20 +211,4 @@ Clean modular PyTorch code
 
 The implementation reflects practical challenges faced in robotics and embodied AI systems.
 
-✅ Ready for submission
 
-yaml
-Copy code
-
----
-
-If you want, I can also help you with:
-
-✅ Email reply to the recruiter  
-✅ Short interview explanation (spoken version)  
-✅ Improve prediction quality further  
-✅ Add validation accuracy metric  
-✅ Polish GitHub formatting  
-✅ Add diagrams  
-
-Just tell me what you want next.
