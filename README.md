@@ -80,7 +80,27 @@ Total Loss = MSE Loss + 0.1 × Smoothness Loss
 
 Smoothness loss penalizes sharp direction changes:
 
+Smoothness loss penalizes sharp direction changes:
+
 ```python
 (path[:, 1:] - path[:, :-1]) ** 2
 
+
+✅ That’s it.
+
+### Important rule (why this works)
+- Opening fence: ```python  
+- Closing fence: ```  
+- Nothing else inside  
+- Next text must start **after** the closing ``` on a new line
+
+---
+
+### Example in context (safe version)
+
+```md
+Smoothness loss penalizes sharp direction changes:
+
+```python
+(path[:, 1:] - path[:, :-1]) ** 2
 
