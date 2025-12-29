@@ -26,6 +26,7 @@ Predict:
 ## 📂 Project Structure
 
 assignment_solution/
+
 │
 ├── data_loader.py        # Dataset & preprocessing  
 ├── model.py              # Vision + Text fusion model  
